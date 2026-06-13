@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { XCircle, ArrowRight, Loader2, MessageCircle } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router'
+import ContactForm from '@/components/ContactForm'
 
 export default function PaymentFail() {
   const [searchParams] = useSearchParams()
