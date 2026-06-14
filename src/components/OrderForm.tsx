@@ -87,16 +87,27 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
       })
 
       const response = await fetch(
-        `https://n8auto.ru/webhook/312b5335-6a03-4722-8d47-7b125579e953?${params.toString()}`
+        `https://n8auto.ru/webhook/312b5335-6a03-4722-8d47-7b125579e953?${params.toString()}`,
+        {
+          method: 'GET',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: {
+            'Accept': 'application/json',
+          },
+        }
       )
 
       if (response.ok) {
         alert('Заказ принят! Мы свяжемся с вами для оплаты.')
         onClose()
       } else {
-        setError('Не удалось отправить заказ')
+        const errorText = await response.text()
+        console.error('Webhook error:', response.status, errorText)
+        setError(`Ошибка: ${response.status}`)
       }
     } catch (err) {
+      console.error('Fetch error:', err)
       setError('Ошибка соединения. Проверьте интернет.')
     } finally {
       setLoading(false)
