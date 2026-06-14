@@ -49,6 +49,13 @@ export default function Hero() {
     }
   }
 
+  const scrollToCTA = () => {
+    const ctaSection = document.querySelector('section[class*="cta"]')
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section
       ref={heroRef}
@@ -119,6 +126,18 @@ export default function Hero() {
           }}
         >
           Оформить заказ
+        </Button>
+        <Button
+          size="lg"
+          onClick={scrollToCTA}
+          variant="outline"
+          style={{
+            color: '#F8FAFC',
+            border: '1px solid rgba(248, 250, 252, 0.15)',
+            fontWeight: 600,
+          }}
+        >
+          Оставить заявку
         </Button>
       </div>
     </section>
