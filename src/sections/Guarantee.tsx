@@ -1,12 +1,7 @@
-import { Shield, Clock, Users, Award } from 'lucide-react'
+import { Clock, Users, Award } from 'lucide-react'
 
 export default function Guarantee() {
   const guarantees = [
-    {
-      icon: Shield,
-      title: 'Гарантия возврата',
-      description: 'Возврат в течение 7 дней, если продукт не подходит',
-    },
     {
       icon: Clock,
       title: 'Индивидуальная настройка',
@@ -15,7 +10,7 @@ export default function Guarantee() {
     {
       icon: Users,
       title: 'Техподдержка',
-      description: 'Поддержка в течение всего срока лицензии',
+      description: 'Помощь по вопросам установки и использования',
     },
     {
       icon: Award,
@@ -29,12 +24,9 @@ export default function Guarantee() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Почему нам доверяют</h2>
-          <p className="text-gray-600 text-lg">
-            Мы гарантируем качество и результат
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {guarantees.map((guarantee, idx) => {
             const Icon = guarantee.icon
             return (
