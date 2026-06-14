@@ -23,6 +23,11 @@ export default function Hero() {
         { y: 0, opacity: 1, duration: 0.8, delay: 0.5, ease: 'power2.out' }
       )
       gsap.fromTo(
+        '.hero-subtitle',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, delay: 0.6, ease: 'power2.out' }
+      )
+      gsap.fromTo(
         '.video-container',
         { scale: 0.95, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1, delay: 0.7, ease: 'cubic-bezier(0.16, 1, 0.3, 1)' }
@@ -64,6 +69,12 @@ export default function Hero() {
         >
           НейроСкан 1С
         </h1>
+        <p
+          className="hero-subtitle text-xl md:text-2xl mt-4"
+          style={{ color: '#94A3B8', fontFamily: 'var(--font-body)' }}
+        >
+          Распознавание документов за секунды
+        </p>
       </div>
 
       {/* Video */}
@@ -87,7 +98,7 @@ export default function Hero() {
       </div>
 
       {/* CTA buttons */}
-      <div className="hero-ctas flex flex-col sm:flex-row gap-4 mt-8">
+      <div className="hero-ctas flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 px-6">
         <a
           href="https://t.me/neuroscan1c"
           target="_blank"
