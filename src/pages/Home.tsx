@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import Header from '@/components/Header'
 import Hero from '@/sections/Hero'
-import Metrics from '@/sections/Metrics'
 import Benefits from '@/sections/Benefits'
 import Pricing from '@/sections/Pricing'
 import FAQ from '@/sections/FAQ'
@@ -38,7 +37,6 @@ export default function Home() {
       <Header />
       <main className="w-full overflow-x-hidden">
         <Hero />
-        <Metrics />
         <Benefits />
         <Pricing />
         <Guarantee />

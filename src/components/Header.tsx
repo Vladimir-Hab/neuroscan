@@ -40,9 +40,6 @@ export default function Header() {
             <a href="#" className="text-sm font-medium hover:opacity-80 transition-opacity" style={{ color: scrolled ? '#64748B' : 'rgba(248, 250, 252, 0.7)' }}>
               Главная
             </a>
-            <a href="#video" className="text-sm font-medium hover:opacity-80 transition-opacity" style={{ color: scrolled ? '#64748B' : 'rgba(248, 250, 252, 0.7)' }}>
-              Демо
-            </a>
             <a href="#pricing" className="text-sm font-medium hover:opacity-80 transition-opacity" style={{ color: scrolled ? '#64748B' : 'rgba(248, 250, 252, 0.7)' }}>
               Тарифы
             </a>

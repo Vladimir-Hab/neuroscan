@@ -178,22 +178,6 @@ export default function Benefits() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.benefits-label',
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1, y: 0, duration: 0.6,
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
-        }
-      )
-      gsap.fromTo(
-        '.benefits-heading',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.8, delay: 0.1,
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
-        }
-      )
-      gsap.fromTo(
         '.benefit-card',
         { opacity: 0, y: 40 },
         {
@@ -213,22 +197,7 @@ export default function Benefits() {
       style={{ background: '#FDFBF7', padding: '120px 0' }}
     >
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-center">
-          <span
-            className="benefits-label inline-block text-sm font-medium uppercase tracking-[0.12em]"
-            style={{ color: '#6366F1', fontFamily: 'var(--font-body)' }}
-          >
-            ПРЕИМУЩЕСТВА
-          </span>
-          <h2
-            className="benefits-heading text-[28px] md:text-[36px] font-bold mt-4 tracking-[-0.02em]"
-            style={{ color: '#1E293B', fontFamily: 'var(--font-display)' }}
-          >
-            Почему НейроСкан
-          </h2>
-        </div>
-
-        <div className="benefits-grid grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div className="benefits-grid grid grid-cols-1 md:grid-cols-3 gap-6">
           {benefits.map((b, i) => (
             <BenefitCard key={i} benefit={b} index={i} />
           ))}
