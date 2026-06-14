@@ -3,16 +3,17 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import Header from '@/components/Header'
 import Hero from '@/sections/Hero'
 import Video from '@/sections/Video'
 import Metrics from '@/sections/Metrics'
 import Benefits from '@/sections/Benefits'
-import Audience from '@/sections/Audience'
 import Pricing from '@/sections/Pricing'
 import FAQ from '@/sections/FAQ'
 import Guarantee from '@/sections/Guarantee'
 import CTA from '@/sections/CTA'
 import Footer from '@/sections/Footer'
+import StickyCTA from '@/components/StickyCTA'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,17 +35,20 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="w-full overflow-x-hidden">
-      <Hero />
-      <Video />
-      <Metrics />
-      <Benefits />
-      <Audience />
-      <Pricing />
-      <Guarantee />
-      <FAQ />
-      <CTA />
-      <Footer />
-    </main>
+    <>
+      <Header />
+      <main className="w-full overflow-x-hidden">
+        <Hero />
+        <Video />
+        <Metrics />
+        <Benefits />
+        <Pricing />
+        <Guarantee />
+        <FAQ />
+        <CTA />
+        <Footer />
+      </main>
+      <StickyCTA />
+    </>
   )
 }

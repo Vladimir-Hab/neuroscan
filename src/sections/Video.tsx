@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Button } from '@/components/ui/button'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -41,10 +42,25 @@ export default function Video() {
           scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
         }
       )
+      gsap.fromTo(
+        '.post-video-cta',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, y: 0, duration: 0.6, delay: 0.6,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' }
+        }
+      )
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
+
+  const scrollToPricing = () => {
+    const pricing = document.getElementById('pricing')
+    if (pricing) {
+      pricing.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <section
@@ -91,6 +107,27 @@ export default function Video() {
         >
           Посмотрите, как НейроСкан распознает накладную и автоматически заполняет документ в 1С
         </p>
+
+        {/* Post-video CTA */}
+        <div className="post-video-cta mt-12 max-w-[600px] mx-auto">
+          <p
+            className="text-lg font-semibold mb-6"
+            style={{ color: '#1E293B', fontFamily: 'var(--font-body)' }}
+          >
+            Уже поняли, что это нужно?
+          </p>
+          <Button
+            size="lg"
+            onClick={scrollToPricing}
+            style={{
+              background: '#6366F1',
+              color: '#F8FAFC',
+              fontWeight: 600,
+            }}
+          >
+            Оформить заказ
+          </Button>
+        </div>
       </div>
     </section>
   )

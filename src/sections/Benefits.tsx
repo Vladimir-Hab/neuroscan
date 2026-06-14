@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Zap, Shield, Lock, FileCheck } from 'lucide-react'
+import { Zap, Shield, Lock, FileCheck, Users, Code2 } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -35,6 +35,18 @@ const benefits: Benefit[] = [
     title: 'УПД и ТОРГ-12',
     description:
       'Поддерживаются все основные виды накладных. Расширение интегрируется напрямую в 1С.',
+  },
+  {
+    icon: Users,
+    title: 'Освободите бухгалтеров от рутины',
+    description:
+      'Автоматизируйте ввод документов без ошибок и опечаток. Сократите время обработки накладных.',
+  },
+  {
+    icon: Code2,
+    title: 'Легкое внедрение для интеграторов',
+    description:
+      'Идеальное решение для франчайзи. Простая настройка, быстрая установка клиентов, без зависимости от интернета.',
   },
 ]
 
@@ -216,7 +228,7 @@ export default function Benefits() {
           </h2>
         </div>
 
-        <div className="benefits-grid grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="benefits-grid grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {benefits.map((b, i) => (
             <BenefitCard key={i} benefit={b} index={i} />
           ))}
