@@ -68,7 +68,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
     try {
       const params = new URLSearchParams({
-        type: 'contact',
         name: formData.name.trim(),
         contact: formData.contact.trim(),
         configuration: formData.configuration,
@@ -77,6 +76,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           .map((s) => s.name)
           .join(', '),
         task: formData.task,
+        source: 'site',
       })
 
       const response = await fetch(

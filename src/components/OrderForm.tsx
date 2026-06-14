@@ -75,7 +75,6 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
 
     try {
       const params = new URLSearchParams({
-        type: 'order',
         name: formData.name.trim(),
         contact: formData.contact.trim(),
         email: formData.email.trim(),
@@ -84,25 +83,21 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
         tariff_name: tariff.name,
         price: tariff.price.toString(),
         comment: formData.comment,
+        source: 'site',
       })
 
       const response = await fetch(
         `https://n8auto.ru/webhook/312b5335-6a03-4722-8d47-7b125579e953?${params.toString()}`
       )
 
-      if (!response.ok) {
-        throw new Error('Не удалось создать заказ')
-      }
-
-      const data = await response.json()
-
-      if (data.success && data.robokassa_url) {
-        window.location.href = data.robokassa_url
+      if (response.ok) {
+        alert('Заказ принят! Мы свяжемся с вами для оплаты.')
+        onClose()
       } else {
-        throw new Error('Неверный ответ сервера')
+        setError('Не удалось отправить заказ')
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Не удалось создать заказ')
+      setError('Ошибка соединения. Проверьте интернет.')
     } finally {
       setLoading(false)
     }
