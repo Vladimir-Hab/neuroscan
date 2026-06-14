@@ -50,7 +50,7 @@ export default function Hero() {
   }
 
   const scrollToCTA = () => {
-    const ctaSection = document.querySelector('[class*="CTA-section"]')
+    const ctaSection = document.getElementById('cta')
     if (ctaSection) {
       ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
