@@ -57,15 +57,9 @@ export default function Hero() {
     >
       {/* Content container */}
       <div ref={textRef} className="flex flex-col items-center text-center max-w-[900px] mx-auto px-6">
-        <span
-          className="hero-eyebrow text-sm font-medium uppercase tracking-[0.15em]"
-          style={{ color: '#818CF8', fontFamily: 'var(--font-body)' }}
-        >
-          РАСШИРЕНИЕ ДЛЯ 1С
-        </span>
         <h1
           className="hero-h1 text-[56px] md:text-[72px] font-extrabold mt-4 tracking-[-0.03em]"
-          style={{ color: '#F8FAFC', fontFamily: 'var(--font-display)' }}
+          style={{ color: '#6366F1', fontFamily: 'var(--font-display)' }}
         >
           НейроСкан 1С
         </h1>
