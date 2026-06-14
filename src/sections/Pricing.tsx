@@ -1,103 +1,99 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Check, Info } from 'lucide-react'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Check } from 'lucide-react'
 import OrderForm from '@/components/OrderForm'
 import { tariffs, services } from '@/lib/tariffs'
 
 export default function Pricing() {
   const [selectedTariff, setSelectedTariff] = useState<keyof typeof tariffs | null>(null)
+  const [selectedService, setSelectedService] = useState<keyof typeof services | null>(null)
 
   const selectedTariffData = selectedTariff ? tariffs[selectedTariff] : null
+  const selectedServiceData = selectedService ? services[selectedService] : null
+
+  const mainTariff = tariffs.main
+  const newDocsService = services.newDocs
 
   return (
     <section className="py-20 px-6 bg-white" id="pricing">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Тарифы</h2>
-          <p className="text-gray-600 text-lg">
-            Выберите подходящий тариф для вашей конфигурации 1С
-          </p>
+          <h2 className="text-4xl font-bold mb-4">Сколько это стоит</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {(Object.entries(tariffs) as [keyof typeof tariffs, typeof tariffs[typeof tariffs[keyof typeof tariffs]]][]).map(([key, tariff]) => (
-            <Card
-              key={key}
-              className="relative hover:shadow-lg transition-shadow"
-            >
-              <CardHeader>
-                <CardTitle className="text-xl">{tariff.name}</CardTitle>
-                <CardDescription>{tariff.period}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{tariff.price.toLocaleString('ru-RU')}</span>
-                  <span className="text-xl text-gray-600 ml-1">₽</span>
+        <div className="grid lg:grid-cols-3 gap-6 mb-12">
+          {/* Main tariff card - wider */}
+          <Card className="lg:col-span-2 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">{mainTariff.name}</CardTitle>
+              {mainTariff.subtitle && (
+                <p className="text-sm text-gray-600 mt-1">{mainTariff.subtitle}</p>
+              )}
+            </CardHeader>
+            <CardContent>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">{mainTariff.price.toLocaleString('ru-RU')}</span>
+                <span className="text-xl text-gray-600 ml-1">₽</span>
+              </div>
+              {mainTariff.note && (
+                <p className="text-sm text-gray-500 mb-6">{mainTariff.note}</p>
+              )}
+
+              <div className="space-y-3">
+                <div className="space-y-2">
+                  {mainTariff.includes.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button
+                className="w-full"
+                size="lg"
+                onClick={() => setSelectedTariff('main')}
+              >
+                Купить
+              </Button>
+            </CardFooter>
+          </Card>
 
-                <div className="space-y-3">
-                  <div className="text-sm text-gray-600 mb-2">
-                    <Info className="inline w-4 h-4 mr-1" />
-                    Конфигурация: {tariff.configuration}
-                  </div>
-
-                  <div className="space-y-2">
-                    {tariff.includes.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  className="w-full"
-                  size="lg"
-                  onClick={() => setSelectedTariff(key)}
-                >
-                  Купить
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+          {/* Additional service card - narrower */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">{newDocsService.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="mb-4">
+                <span className="text-2xl font-bold">{newDocsService.price.toLocaleString('ru-RU')}</span>
+                <span className="text-lg text-gray-600 ml-1">₽</span>
+              </div>
+              {newDocsService.description && (
+                <p className="text-sm text-gray-600">{newDocsService.description}</p>
+              )}
+            </CardContent>
+            <CardFooter>
+              <Button
+                variant="outline"
+                className="w-full"
+                size="lg"
+                onClick={() => setSelectedService('newDocs')}
+              >
+                Заказать
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
 
-        <div>
-          <h3 className="text-2xl font-bold mb-6 text-center">Дополнительные услуги</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {(Object.entries(services) as [keyof typeof services, typeof services[typeof services[keyof typeof services]]][]).map(([key, service]) => (
-              <Card key={key}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{service.name}</CardTitle>
-                  {service.period && (
-                    <CardDescription>{service.period}</CardDescription>
-                  )}
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <span className="text-2xl font-bold">{service.price.toLocaleString('ru-RU')}</span>
-                    <span className="text-lg text-gray-600 ml-1">₽</span>
-                  </div>
-                  {service.description && (
-                    <p className="text-sm text-gray-600">{service.description}</p>
-                  )}
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    size="lg"
-                  >
-                    Заказать через форму
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
+        {/* Note under cards */}
+        <p className="text-center text-sm text-gray-600">
+          Подходит для 1С:УТ 11.5 и 1С:Бухгалтерия 3.0. Для других конфигураций
+          (БП, КА, ERP, УНФ и доработанных) — адаптация по индивидуальному запросу.
+        </p>
       </div>
 
       {selectedTariffData && (
@@ -105,6 +101,14 @@ export default function Pricing() {
           open={!!selectedTariff}
           onClose={() => setSelectedTariff(null)}
           tariff={selectedTariffData}
+        />
+      )}
+
+      {selectedServiceData && (
+        <OrderForm
+          open={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          tariff={selectedServiceData}
         />
       )}
     </section>

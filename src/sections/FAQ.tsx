@@ -63,21 +63,21 @@ export default function FAQ() {
 
           <AccordionItem value="item-5" className="border rounded-lg px-4">
             <AccordionTrigger className="text-left">
-              Что включено в цену тарифа?
+              Что включено в цену?
             </AccordionTrigger>
             <AccordionContent className="text-gray-600">
-              В стоимость включены: лицензия на 1 месяц, установка и настройка,
-              базовое обучение сотрудников, техподдержка в течение срока лицензии.
+              В стоимость включены: бессрочная лицензия, установка и настройка,
+              базовое обучение сотрудников. Никаких ежемесячных платежей.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-6" className="border rounded-lg px-4">
             <AccordionTrigger className="text-left">
-              Как продлить лицензию?
+              Лицензия ограничена по времени?
             </AccordionTrigger>
             <AccordionContent className="text-gray-600">
-              Продление лицензии — 7320 ₽ за 6 месяцев. За неделю до окончания мы
-              пришлем напоминание и предложим продлить подписку.
+              Нет, это разовая покупка. Лицензия выдается навсегда без ежемесячной
+              подписки. После покупки продукт работает без ограничений.
             </AccordionContent>
           </AccordionItem>
 
@@ -86,8 +86,8 @@ export default function FAQ() {
               Могу ли я попробовать перед покупкой?
             </AccordionTrigger>
             <AccordionContent className="text-gray-600">
-              Да, мы предоставляем демо-доступ на 7 дней. Оставьте заявку, и мы
-              свяжемся с вами для настройки тестового периода.
+              Оставьте заявку, и мы с вами свяжемся для обсуждения ваших задач.
+              Мы подберем оптимальное решение под вашу конфигурацию 1С.
             </AccordionContent>
           </AccordionItem>
 

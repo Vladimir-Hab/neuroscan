@@ -27,7 +27,7 @@ interface OrderFormProps {
     id: string
     name: string
     price: number
-    configuration: string
+    configuration?: string
   }
 }
 
@@ -39,7 +39,7 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
     name: '',
     contact: '',
     email: '',
-    configuration: tariff.configuration,
+    configuration: tariff.configuration || '',
     comment: '',
   })
 
@@ -166,27 +166,29 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
             <p className="text-xs text-gray-500">Для отправки чека и документов</p>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="order-configuration">Конфигурация 1С</Label>
-            <Select
-              value={formData.configuration}
-              onValueChange={(value) =>
-                setFormData({ ...formData, configuration: value })
-              }
-              disabled={loading}
-            >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {configurations.map((config) => (
-                  <SelectItem key={config} value={config}>
-                    {config}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          {tariff.configuration && (
+            <div className="space-y-2">
+              <Label htmlFor="order-configuration">Конфигурация 1С</Label>
+              <Select
+                value={formData.configuration}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, configuration: value })
+                }
+                disabled={loading}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {configurations.map((config) => (
+                    <SelectItem key={config} value={config}>
+                      {config}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label htmlFor="order-comment">Комментарий (опционально)</Label>

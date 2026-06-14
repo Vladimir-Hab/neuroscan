@@ -41,7 +41,7 @@ export default function Header() {
               Главная
             </a>
             <a href="#pricing" className="text-sm font-medium hover:opacity-80 transition-opacity" style={{ color: scrolled ? '#64748B' : 'rgba(248, 250, 252, 0.7)' }}>
-              Тарифы
+              Сколько это стоит
             </a>
             <a href="#faq" className="text-sm font-medium hover:opacity-80 transition-opacity" style={{ color: scrolled ? '#64748B' : 'rgba(248, 250, 252, 0.7)' }}>
               FAQ
