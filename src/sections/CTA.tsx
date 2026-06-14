@@ -2,7 +2,7 @@ import ContactForm from '@/components/ContactForm'
 
 export default function CTA() {
   return (
-    <section className="py-20 px-6" style={{ background: '#0A1628' }}>
+    <section className="py-20 px-6" style={{ background: '#0A1628' }} id="cta">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-white mb-4">
