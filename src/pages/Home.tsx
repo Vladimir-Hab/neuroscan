@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import Header from '@/components/Header'
 import Hero from '@/sections/Hero'
-import Video from '@/sections/Video'
 import Metrics from '@/sections/Metrics'
 import Benefits from '@/sections/Benefits'
 import Pricing from '@/sections/Pricing'
@@ -39,7 +38,6 @@ export default function Home() {
       <Header />
       <main className="w-full overflow-x-hidden">
         <Hero />
-        <Video />
         <Metrics />
         <Benefits />
         <Pricing />
