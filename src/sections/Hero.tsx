@@ -50,9 +50,9 @@ export default function Hero() {
   }
 
   const scrollToCTA = () => {
-    const ctaSection = document.querySelector('section[class*="cta"]')
+    const ctaSection = document.querySelector('[class*="CTA-section"]')
     if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: 'smooth' })
+      ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 
@@ -130,10 +130,9 @@ export default function Hero() {
         <Button
           size="lg"
           onClick={scrollToCTA}
-          variant="outline"
           style={{
+            background: '#6366F1',
             color: '#F8FAFC',
-            border: '1px solid rgba(248, 250, 252, 0.15)',
             fontWeight: 600,
           }}
         >
