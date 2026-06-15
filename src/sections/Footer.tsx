@@ -12,7 +12,7 @@ export default function Footer() {
           &copy; 2025 НейроСкан 1С
         </span>
         <a
-          href="https://t.me/neuroscan1c"
+          href="https://t.me/vladimir_7575"
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm transition-all duration-200 hover:underline"

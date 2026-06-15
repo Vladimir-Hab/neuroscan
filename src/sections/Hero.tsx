@@ -101,7 +101,7 @@ export default function Hero() {
       {/* CTA buttons */}
       <div className="hero-ctas flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 px-6">
         <a
-          href="https://t.me/neuroscan1c"
+          href="https://t.me/vladimir_7575"
           target="_blank"
           rel="noopener noreferrer"
         >
