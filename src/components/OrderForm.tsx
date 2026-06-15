@@ -33,6 +33,7 @@ interface OrderFormProps {
 
 export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
   const [formData, setFormData] = useState({
@@ -77,12 +78,8 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
       const params = new URLSearchParams({
         name: formData.name.trim(),
         contact: formData.contact.trim(),
-        email: formData.email.trim(),
         configuration: formData.configuration,
-        tariff_id: tariff.id,
-        tariff_name: tariff.name,
-        price: tariff.price.toString(),
-        comment: formData.comment,
+        task: `Заказ с сайта: ${tariff.name} — ${tariff.price.toLocaleString('ru-RU')} ₽. ${formData.comment ? `Комментарий: ${formData.comment}.` : ''}`,
         source: 'site',
       })
 
@@ -94,13 +91,30 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
         }
       )
 
-      alert('Заказ принят! Мы свяжемся с вами для оплаты.')
-      onClose()
+      setSuccess(true)
+      setTimeout(() => {
+        setSuccess(false)
+        onClose()
+      }, 3000)
     } catch (err) {
       setError('Ошибка соединения. Проверьте интернет.')
     } finally {
       setLoading(false)
     }
+  }
+
+  if (success) {
+    return (
+      <Dialog open={open} onOpenChange={onClose}>
+        <DialogContent className="sm:max-w-[500px]">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+            <div className="text-green-600 text-4xl mb-2">✓</div>
+            <p className="text-green-800 font-semibold">Заказ принят!</p>
+            <p className="text-green-600 text-sm mt-1">Мы свяжемся с вами для оплаты</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
   }
 
   return (

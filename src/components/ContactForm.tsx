@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -75,14 +75,16 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           .filter((s) => formData.services.includes(s.id))
           .map((s) => s.name)
           .join(', '),
-        task: formData.task,
+        task: 'Заявка с сайта: ' + (formData.task || ''),
         source: 'site',
       })
-
-      await fetch(
-        `https://n8auto.ru/webhook/312b5335-6a03-4722-8d47-7b125579e953?${params.toString()}`,
         {
           method: 'GET',
+          mode: 'no-cors',
+        }
+      )
+
+      await fetch(
           mode: 'no-cors',
         }
       )
