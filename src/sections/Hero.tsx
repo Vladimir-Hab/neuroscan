@@ -1,13 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from '@/components/ui/button'
+import OrderForm from '@/components/OrderForm'
+import { tariffs } from '@/lib/tariffs'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
+  const [orderFormOpen, setOrderFormOpen] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -118,7 +121,7 @@ export default function Hero() {
         </a>
         <Button
           size="lg"
-          onClick={scrollToPricing}
+          onClick={() => setOrderFormOpen(true)}
           style={{
             background: '#6366F1',
             color: '#F8FAFC',
@@ -127,18 +130,13 @@ export default function Hero() {
         >
           Оформить заказ
         </Button>
-        <Button
-          size="lg"
-          onClick={scrollToCTA}
-          style={{
-            background: '#6366F1',
-            color: '#F8FAFC',
-            fontWeight: 600,
-          }}
-        >
-          Оставить заявку
-        </Button>
       </div>
+
+      <OrderForm
+        open={orderFormOpen}
+        onClose={() => setOrderFormOpen(false)}
+        tariff={tariffs.main}
+      />
     </section>
   )
 }
