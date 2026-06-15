@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
+import OrderForm from '@/components/OrderForm'
+import { tariffs } from '@/lib/tariffs'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [orderFormOpen, setOrderFormOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,13 +15,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const scrollToPricing = () => {
-    const pricing = document.getElementById('pricing')
-    if (pricing) {
-      pricing.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 
   return (
     <header
@@ -51,7 +47,7 @@ export default function Header() {
           {/* CTA Button */}
           <Button
             size="sm"
-            onClick={scrollToPricing}
+            onClick={() => setOrderFormOpen(true)}
             style={{
               background: '#6366F1',
               color: '#F8FAFC',
@@ -62,6 +58,12 @@ export default function Header() {
           </Button>
         </div>
       </div>
+
+      <OrderForm
+        open={orderFormOpen}
+        onClose={() => setOrderFormOpen(false)}
+        tariff={tariffs.main}
+      />
     </header>
   )
 }

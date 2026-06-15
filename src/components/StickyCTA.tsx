@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { ShoppingCart } from 'lucide-react'
+import OrderForm from '@/components/OrderForm'
+import { tariffs } from '@/lib/tariffs'
 
 export default function StickyCTA() {
   const [visible, setVisible] = useState(false)
+  const [orderFormOpen, setOrderFormOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,13 +16,6 @@ export default function StickyCTA() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const scrollToPricing = () => {
-    const pricing = document.getElementById('pricing')
-    if (pricing) {
-      pricing.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 
   return (
     <div
@@ -32,7 +28,7 @@ export default function StickyCTA() {
     >
       <Button
         size="lg"
-        onClick={scrollToPricing}
+        onClick={() => setOrderFormOpen(true)}
         style={{
           background: '#6366F1',
           color: '#F8FAFC',
@@ -43,5 +39,11 @@ export default function StickyCTA() {
         Оформить заказ
       </Button>
     </div>
+
+    <OrderForm
+      open={orderFormOpen}
+      onClose={() => setOrderFormOpen(false)}
+      tariff={tariffs.main}
+    />
   )
 }
