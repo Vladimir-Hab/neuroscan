@@ -142,6 +142,15 @@ export default function ContactForm() {
         {loading ? 'Отправка...' : 'Отправить заявку'}
       </Button>
 
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full"
+        onClick={() => window.open('https://t.me/vladimir_7575', '_blank')}
+      >
+        Написать в Telegram
+      </Button>
+
       <p className="text-xs text-gray-500 text-center">
         Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
       </p>
