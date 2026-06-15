@@ -76,6 +76,7 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
 
     try {
       const params = new URLSearchParams({
+        type: 'order',
         name: formData.name.trim(),
         contact: formData.contact.trim(),
         configuration: formData.configuration,

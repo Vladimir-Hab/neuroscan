@@ -40,6 +40,7 @@ export default function ContactForm() {
 
     try {
       const params = new URLSearchParams({
+        type: 'contact',
         name: formData.name.trim(),
         contact: formData.contact.trim(),
         task: `Заявка на консультацию. ${formData.comment ? `Комментарий: ${formData.comment}.` : ''}`,
