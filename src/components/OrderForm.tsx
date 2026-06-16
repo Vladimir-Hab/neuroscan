@@ -220,34 +220,36 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
             </div>
           )}
 
-          <DialogFooter className="flex-col gap-2">
-            <div className="flex gap-2 w-full justify-center">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onClose}
-                disabled={loading}
-              >
-                Отмена
-              </Button>
-              <Button
-                type="submit"
-                disabled={loading}
-              >
-                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Отправить заявку
-              </Button>
+          <DialogFooter>
+            <div className="flex flex-col gap-2 w-full">
+              <div className="flex gap-2 justify-center">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onClose}
+                  disabled={loading}
+                >
+                  Отмена
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={loading}
+                >
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  Отправить заявку
+                </Button>
+              </div>
+              <p className="text-xs text-gray-500 text-center">
+                Нажимая кнопку, вы соглашаетесь с{' '}
+                <button
+                  type="button"
+                  onClick={() => setPrivacyOpen(true)}
+                  className="text-blue-600 hover:underline"
+                >
+                  политикой конфиденциальности
+                </button>
+              </p>
             </div>
-            <p className="text-xs text-gray-500 text-center">
-              Нажимая кнопку, вы соглашаетесь с{' '}
-              <button
-                type="button"
-                onClick={() => setPrivacyOpen(true)}
-                className="text-blue-600 hover:underline"
-              >
-                политикой конфиденциальности
-              </button>
-            </p>
           </DialogFooter>
           <PrivacyPolicyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
         </form>
