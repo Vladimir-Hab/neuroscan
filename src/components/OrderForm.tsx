@@ -220,21 +220,19 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
             </div>
           )}
 
-          <DialogFooter className="gap-2 flex-col">
-            <div className="flex gap-2 w-full">
+          <DialogFooter className="flex-col gap-2">
+            <div className="flex gap-2 w-full justify-center">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
                 disabled={loading}
-                className="flex-1"
               >
                 Отмена
               </Button>
               <Button
                 type="submit"
                 disabled={loading}
-                className="flex-1"
               >
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Отправить заявку
