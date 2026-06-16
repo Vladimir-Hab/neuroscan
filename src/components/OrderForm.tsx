@@ -218,22 +218,32 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
             </div>
           )}
 
-          <DialogFooter className="gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              disabled={loading}
-            >
-              Отмена
-            </Button>
-            <Button
-              type="submit"
-              disabled={loading}
-            >
-              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Отправить заявку
-            </Button>
+          <DialogFooter className="gap-2 flex-col">
+            <div className="flex gap-2 w-full">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onClose}
+                disabled={loading}
+                className="flex-1"
+              >
+                Отмена
+              </Button>
+              <Button
+                type="submit"
+                disabled={loading}
+                className="flex-1"
+              >
+                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Отправить заявку
+              </Button>
+            </div>
+            <p className="text-xs text-gray-500 text-center">
+              Нажимая кнопку, вы соглашаетесь с{' '}
+              <a href="/neuroscan/ПолитикаОбрНаСайт.docx" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                политикой конфиденциальности
+              </a>
+            </p>
           </DialogFooter>
         </form>
       </DialogContent>

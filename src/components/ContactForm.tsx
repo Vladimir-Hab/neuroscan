@@ -152,7 +152,10 @@ export default function ContactForm() {
       </Button>
 
       <p className="text-xs text-gray-500 text-center">
-        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+        Нажимая кнопку, вы соглашаетесь с{' '}
+        <a href="/neuroscan/ПолитикаОбрНаСайт.docx" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+          политикой конфиденциальности
+        </a>
       </p>
     </form>
   )
