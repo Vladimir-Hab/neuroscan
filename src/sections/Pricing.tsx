@@ -89,11 +89,7 @@ export default function Pricing() {
           </Card>
         </div>
 
-        {/* Note under cards */}
-        <p className="text-center text-sm text-gray-600">
-          Подходит для 1С:УТ 11.5 и 1С:Бухгалтерия 3.0. Для других конфигураций
-          (БП, КА, ERP, УНФ и доработанных) — адаптация по индивидуальному запросу.
-        </p>
+
       </div>
 
       {selectedTariffData && (
