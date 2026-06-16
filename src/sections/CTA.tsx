@@ -17,18 +17,7 @@ export default function CTA() {
           <ContactForm />
         </div>
 
-        <div className="text-center mt-8">
-          <p className="text-gray-400 mb-4">Или выберите готовое решение</p>
-          <a
-            href="#pricing"
-            className="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium"
-          >
-            Выбрать тариф
-            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-        </div>
+
       </div>
     </section>
   )
