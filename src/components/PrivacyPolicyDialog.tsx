@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -5,8 +6,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import politicsText from '../../Politics.md?raw'
 
 interface PrivacyPolicyDialogProps {
   open: boolean
@@ -14,6 +13,14 @@ interface PrivacyPolicyDialogProps {
 }
 
 export default function PrivacyPolicyDialog({ open, onOpenChange }: PrivacyPolicyDialogProps) {
+  const [content, setContent] = useState('')
+
+  useEffect(() => {
+    fetch('/neuroscan/Politics.md')
+      .then(res => res.text())
+      .then(text => setContent(text))
+  }, [])
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
@@ -23,9 +30,9 @@ export default function PrivacyPolicyDialog({ open, onOpenChange }: PrivacyPolic
             В отношении обработки персональных данных
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="h-[60vh] pr-4">
+        <div className="h-[60vh] overflow-y-auto pr-4">
           <div className="prose prose-sm dark:prose-invert max-w-none">
-            {politicsText.split('\n').map((line, index) => {
+            {content.split('\n').map((line, index) => {
               if (line.startsWith('# ')) {
                 return (
                   <h2 key={index} className="text-lg font-bold mt-4 mb-2">
@@ -71,7 +78,7 @@ export default function PrivacyPolicyDialog({ open, onOpenChange }: PrivacyPolic
               )
             })}
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   )

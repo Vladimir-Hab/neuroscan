@@ -37,7 +37,6 @@ export default function OrderForm({ open, onClose, tariff }: OrderFormProps) {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [privacyOpen, setPrivacyOpen] = useState(false)
-  const [privacyOpen, setPrivacyOpen] = useState(false)
 
   const [formData, setFormData] = useState({
     name: '',
