@@ -4,11 +4,13 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Loader2 } from 'lucide-react'
+import PrivacyPolicyDialog from './PrivacyPolicyDialog'
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const [privacyOpen, setPrivacyOpen] = useState(false)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -153,10 +155,15 @@ export default function ContactForm() {
 
       <p className="text-xs text-gray-500 text-center">
         Нажимая кнопку, вы соглашаетесь с{' '}
-        <a href="/neuroscan/PoliticsObrNaSite.docx" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+        <button
+          type="button"
+          onClick={() => setPrivacyOpen(true)}
+          className="text-blue-600 hover:underline"
+        >
           политикой конфиденциальности
-        </a>
+        </button>
       </p>
+      <PrivacyPolicyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
     </form>
   )
 }
